@@ -1,17 +1,17 @@
 package view;
 
-import model.Model;
-import service.Service;
+import model.Matrix;
+import service.MatrixService;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class View {
+public class MatrixView {
     Scanner scan = new Scanner(System.in);
-    Service serv = new Service();
+    MatrixService serv = new MatrixService();
     int y = 0, x = 0;
-
-    synchronized public void info() {
+// Метод, реализующий консольный опрос размеров матриц
+    synchronized public void Info() {
 
         System.out.println("Добро пожаловать в приложение. Укажите размер матриц ");
         while (true) {
@@ -31,8 +31,8 @@ public class View {
             scan.next();
         }
     }
-
-    synchronized public Model next() {
+// Метод, реализующий консольный опрос для заполнения матрицы значениями
+    synchronized public Matrix Next() {
 
         while (true) {
             Scanner scan = new Scanner(System.in);
@@ -49,8 +49,8 @@ public class View {
                 case 1:
                     System.out.println("Выбран Автоматический режим ввода данных");
                     System.out.println("Спасибо ! Матрица заполнена:");
-                    Model m1;
-                    m1=serv.create(y, x);
+                    Matrix m1;
+                    m1=serv.Create(y, x);
                     for (int k = 0; k < m1.toArray().length; k++) {
                         System.out.println(Arrays.toString(m1.toArray()[k]));};
                     return m1;
@@ -77,7 +77,7 @@ public class View {
                     System.out.println("Спасибо ! Матрица заполнена:");
                     for (int k = 0; k < mass.length; k++) {
                         System.out.println(Arrays.toString(mass[k]));};
-                    return new Model(mass);
+                    return new Matrix(mass);
 
                 case 3:
                     System.out.println("Выход");
@@ -85,7 +85,10 @@ public class View {
             }
         }
     }
-    synchronized public void endMess(Model m){
+
+
+    // Метод выводящий результат перемножения двух матриц
+    synchronized public void endMess(Matrix m){
         System.out.println("\nМатрицы были перемножены, далее - полученный результат:\n");
         for (int i = 0; i < m.toArray().length; i++) {
             System.out.println(Arrays.toString(m.toArray()[i]));};

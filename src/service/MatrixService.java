@@ -1,24 +1,24 @@
 package service;
 
 
-import model.Model;
+import model.Matrix;
 
 import java.util.Random;
 
-public class Service {
+public class MatrixService {
     Random ran=new Random();
-
-   public Model create (int y,int x){
+//Метод для автоматического формирования матрицы
+   public Matrix Create (int y, int x){
         int[][]mass=new int[y][x];
         for(int i=0;i<y;i++){
             for(int j=0;j<x;j++){
                 mass[i][j]= ran.nextInt(1000);
             }
         }
-        return new Model(mass);
+        return new Matrix(mass);
     }
-
-    synchronized public Model multi(Model m1,Model m2){
+// Метод, перемнажающий две матрицы
+    synchronized public Matrix MatrixMultiplication(Matrix m1, Matrix m2){
         int y,x;
              y=m1.toArray().length;
              x=m1.toArray()[0].length;
@@ -29,6 +29,6 @@ public class Service {
                 result[i][j]=m1.toArray()[i][j]*m2.toArray()[i][j];
             }
         }
-        return new Model(result);
+        return new Matrix(result);
     }
 }
