@@ -11,7 +11,7 @@ public class MatrixView {
     MatrixService serv = new MatrixService();
     int y = 0, x = 0;
 // Метод, реализующий консольный опрос размеров матриц
-    synchronized public void Info() {
+    synchronized public void info() {
 
         System.out.println("Добро пожаловать в приложение. Укажите размер матриц ");
         while (true) {
@@ -32,7 +32,7 @@ public class MatrixView {
         }
     }
 // Метод, реализующий консольный опрос для заполнения матрицы значениями
-    synchronized public Matrix Next() {
+    synchronized public Matrix setMatrixData() {
 
         while (true) {
             Scanner scan = new Scanner(System.in);
@@ -50,7 +50,7 @@ public class MatrixView {
                     System.out.println("Выбран Автоматический режим ввода данных");
                     System.out.println("Спасибо ! Матрица заполнена:");
                     Matrix m1;
-                    m1=serv.Create(y, x);
+                    m1=serv.create(y, x);
                     for (int k = 0; k < m1.toArray().length; k++) {
                         System.out.println(Arrays.toString(m1.toArray()[k]));};
                     return m1;

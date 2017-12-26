@@ -14,14 +14,14 @@ public class MatrixController {
        Matrix result;
 
        //опрос размера матриц
-       vi.Info();
+       vi.info();
 
        // опрос для заполнения двух матриц
-       m1=vi.Next();
-       m2=vi.Next();
+       m1=vi.setMatrixData();
+       m2=vi.setMatrixData();
 
        //перемножение матриц
-       result=serv.MatrixMultiplication(m1,m2);
+       result=serv.matrixMultiplication(m1,m2);
         //вывод результата перемножения
        vi.endMess(result);
     }
